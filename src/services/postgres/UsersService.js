@@ -11,9 +11,7 @@ class UsersService {
   }
 
   async addUser({ username, password, fullname }) {
-    //Verify if username is taken or not
     await this.verifyNewUsername(username);
-
     const id = `user-${nanoid(16)}`;
     const hashedPassword = await bcrypt.hash(password, 10);
     const query = {
@@ -26,7 +24,6 @@ class UsersService {
     if (!result.rows.length) {
       throw new InvariantError('User gagal ditambahkan');
     }
-
     return result.rows[0].id;
   }
 

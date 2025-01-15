@@ -37,7 +37,7 @@ class NotesHandler {
     };
   }
 
-  async getNoteByIdHandler(request, h) {
+ async getNoteByIdHandler(request, h) {
     const { id } = request.params;
     const note = await this._service.getNoteById(id);
     return {
